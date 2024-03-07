@@ -1,26 +1,27 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int function (int x){
+void iteratie_2(int x,int *i){
 
     if(x<0)
-        return 0;
-    else
-    {
-        x=x-2;
-        return x;
-    }
-    function(x);
+        {
+            *i-=1;
+            return 0;
+        }
+
+    x=x-2;
+    *i+=1;
+    iteratie_2(x,i);
+    return x;
 }
 
 int main(){
 
 	int a=30, i=0;
 
-	while (a>0){
-		a=function(a);
-		i++;
-	}
+
+    iteratie_2(a,&i);
+
 	printf("%d", i);
 	return 0;
 }
